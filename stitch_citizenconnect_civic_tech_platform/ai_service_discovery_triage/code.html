@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CitizenConnect AI - Service Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "surface-bright": "#f7f9fb",
+                      "inverse-primary": "#b4c5ff",
+                      "on-surface": "#191c1e",
+                      "outline": "#737686",
+                      "surface-container-high": "#e6e8ea",
+                      "text-secondary": "#64748B",
+                      "on-surface-variant": "#434655",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-container-low": "#f2f4f6",
+                      "on-tertiary": "#ffffff",
+                      "outline-variant": "#c3c6d7",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#e0e3e5",
+                      "background": "#f7f9fb",
+                      "tertiary-fixed": "#d3e4fe",
+                      "secondary-fixed": "#9cf2e8",
+                      "on-primary-container": "#eeefff",
+                      "inverse-surface": "#2d3133",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#dbe1ff",
+                      "text-primary": "#0F172A",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "on-primary-fixed": "#00174b",
+                      "on-background": "#191c1e",
+                      "surface": "#f7f9fb",
+                      "secondary": "#006a63",
+                      "ai-surface": "#F0FDFA",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "ai-border": "#CCFBF1",
+                      "primary": "#004ac6",
+                      "on-secondary-fixed": "#00201d",
+                      "inverse-on-surface": "#eff1f3",
+                      "tertiary": "#46566c",
+                      "on-secondary-container": "#006f67",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#e9f0ff",
+                      "secondary-fixed-dim": "#80d5cb",
+                      "surface-container-highest": "#e0e3e5",
+                      "tertiary-container": "#5e6e85",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#0053db",
+                      "secondary-container": "#99efe5",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#00504a",
+                      "primary-container": "#2563eb",
+                      "surface-container": "#eceef0",
+                      "surface-dim": "#d8dadc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "xl": "40px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "base": "8px",
+                      "margin-desktop": "32px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter"],
+                      "display-lg": ["Manrope"],
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Manrope"],
+                      "headline-sm": ["Manrope"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Manrope"],
+                      "label-md": ["Inter"],
+                      "headline-lg-mobile": ["Manrope"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .ai-surface {
+            background-color: #F0FDFA;
+            border-color: #CCFBF1;
+            border-width: 1px;
+        }
+        .user-surface {
+            background-color: #475569; /* slate-600 */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased md:flex-row">
+<!-- TopAppBar (Web) / TopAppBar (Mobile) -->
+<header class="bg-surface dark:bg-on-background text-primary dark:text-primary-fixed flex justify-between items-center w-full px-margin-mobile h-14 z-50 flat no shadows md:hidden fixed top-0 left-0">
+<button class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors rounded-full p-2">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-sm-mobile text-headline-sm-mobile font-bold text-primary dark:text-primary-fixed">CitizenConnect AI</span>
+<button class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors rounded-full p-2">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+</header>
+<!-- SideNav (Desktop) -->
+<nav class="hidden md:flex h-full w-80 rounded-r-xl bg-surface-container-lowest dark:bg-inverse-surface shadow-lg dark:shadow-none flex-col p-md fixed inset-y-0 left-0 z-[60]">
+<div class="mb-8">
+<div class="font-headline-sm text-headline-sm font-bold text-primary">CitizenConnect AI</div>
+</div>
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high">
+<img alt="Citizen Profile Image" class="w-full h-full object-cover" data-alt="A professional headshot of a person, soft natural lighting, clean background, modern corporate style, conveying trust and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzua0ti1qHH754U1SVc7uiDOP9vz9AHPMiDlbdv1XBhkyUY7iYWJETn7KDbkCWWGbDLmc8SNSn5SXq5Tng-qKuU_eSNwepHNxXtaUzMaMY0Y8W4u7HMHSj3U5aFatljMhnSKK64fYAn6CYJO_qaAaW7CGxYiGRLzsDXHTBDR_nqlh9OLxWicAAddaNXnbCdAaWkXBeHua1eebLyAc3byRvHq_rlkqv_-Zu8DIusfK1KBLMVPVcdOfg"/>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed">Alex Citizen</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Verified Resident</div>
+<div class="font-label-sm text-label-sm text-primary">Premium Member</div>
+</div>
+</div>
+<ul class="flex-1 space-y-2">
+<li>
+<a class="flex items-center gap-4 p-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors hover:bg-surface-container-high dark:hover:bg-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-label-md text-label-md">Safety Guidelines</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 p-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors hover:bg-surface-container-high dark:hover:bg-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="policy">policy</span>
+<span class="font-label-md text-label-md">Privacy Policy</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 p-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors hover:bg-surface-container-high dark:hover:bg-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 p-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors hover:bg-surface-container-high dark:hover:bg-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-md text-label-md">Feedback</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto pt-20 pb-24 md:pt-8 md:pl-88 px-margin-mobile md:px-margin-desktop flex flex-col h-screen">
+<!-- Chat Area -->
+<div class="flex-1 overflow-y-auto flex flex-col gap-lg pb-4">
+<!-- User Prompt -->
+<div class="flex justify-end w-full">
+<div class="user-surface text-on-primary rounded-[12px] rounded-br-none p-md max-w-[640px] font-body-md text-body-md shadow-sm">
+                    What government benefits can I get?
+                </div>
+</div>
+<!-- AI Response -->
+<div class="flex justify-start w-full">
+<div class="flex flex-col gap-sm max-w-[640px]">
+<div class="ai-surface text-[#0f172a] rounded-[16px] rounded-bl-none p-md font-body-md text-body-md shadow-sm">
+                        I can help you find government schemes and benefits based on your requirements. Please tell me a bit more about yourself so I can tailor the results.
+                    </div>
+<!-- Interactive Form Cards (Bento style) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+<!-- Location -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-2 hover:border-[#0F766E] transition-colors cursor-pointer">
+<span class="font-label-sm text-label-sm text-text-secondary uppercase tracking-wider">Location</span>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary">Select Region</span>
+<span class="material-symbols-outlined text-outline" data-icon="location_on">location_on</span>
+</div>
+</div>
+<!-- Age Group -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-2 hover:border-[#0F766E] transition-colors cursor-pointer">
+<span class="font-label-sm text-label-sm text-text-secondary uppercase tracking-wider">Age Group</span>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary">Select Age</span>
+<span class="material-symbols-outlined text-outline" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+<!-- Employment Status -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-2 hover:border-[#0F766E] transition-colors cursor-pointer sm:col-span-2">
+<span class="font-label-sm text-label-sm text-text-secondary uppercase tracking-wider">Current Status</span>
+<div class="flex gap-2 mt-1">
+<button class="flex-1 py-2 px-4 rounded-lg border border-outline-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors">Student</button>
+<button class="flex-1 py-2 px-4 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md">Working</button>
+<button class="flex-1 py-2 px-4 rounded-lg border border-outline-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors">Unemployed</button>
+</div>
+</div>
+<!-- Income -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-2 hover:border-[#0F766E] transition-colors cursor-pointer sm:col-span-2">
+<span class="font-label-sm text-label-sm text-text-secondary uppercase tracking-wider">Annual Income Bracket</span>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary">Select Income Range</span>
+<span class="material-symbols-outlined text-outline" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+</div>
+</div>
+<button class="mt-4 bg-[#2563EB] text-on-primary rounded-lg py-3 px-6 font-label-md text-label-md w-full sm:w-auto self-start shadow-sm hover:opacity-90 transition-opacity">
+                        FIND SERVICES
+                    </button>
+</div>
+</div>
+</div>
+<!-- Input Area Fixed Bottom -->
+<div class="sticky bottom-0 left-0 w-full pt-4 pb-2 bg-gradient-to-t from-background via-background to-transparent md:bg-none md:static md:mt-auto">
+<div class="flex gap-2 overflow-x-auto pb-4 hide-scrollbar">
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container-lowest border border-outline-variant text-text-primary font-label-sm text-label-sm hover:border-[#0F766E] transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="school">school</span> Student Grants
+                </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container-lowest border border-outline-variant text-text-primary font-label-sm text-label-sm hover:border-[#0F766E] transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="home_work">home_work</span> Housing Support
+                </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container-lowest border border-outline-variant text-text-primary font-label-sm text-label-sm hover:border-[#0F766E] transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="health_and_safety">health_and_safety</span> Healthcare Subsidy
+                </button>
+</div>
+<div class="relative w-full max-w-3xl mx-auto">
+<textarea class="w-full min-h-[56px] bg-surface-container-lowest border border-outline-variant rounded-xl p-4 pr-12 resize-none focus:outline-none focus:border-[#0F766E] focus:ring-1 focus:ring-[#0F766E] font-body-md text-body-md transition-colors" placeholder="Type your follow-up questions..." rows="1"></textarea>
+<button class="absolute right-4 bottom-4 text-[#0F766E] hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface/90 backdrop-blur-md border-t border-outline-variant dark:border-on-surface-variant flat no shadows md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant opacity-70 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-xl p-2 w-16" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant opacity-70 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-xl p-2 w-16" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-sm text-label-sm mt-1">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-semibold hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-xl p-2 w-16 scale-110 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome" data-weight="fill">auto_awesome</span>
+<span class="font-label-sm text-label-sm mt-1">AI Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant opacity-70 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-xl p-2 w-16" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-label-sm text-label-sm mt-1">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant opacity-70 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-xl p-2 w-16" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

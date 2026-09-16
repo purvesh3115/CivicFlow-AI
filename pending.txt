@@ -1,0 +1,5 @@
+[COMPLETED] 1. Offline Queue & Auto-Sync Engine (persists offline complaints & local photos, background sync banner, zero connectivity support)
+[COMPLETED] 2. Real SMS OTP Authentication (Firebase Phone Auth verifyPhoneNumber, E.164 formatting, auto-verification, resend token)
+Citizen Rating & Feedback Modal on resolved issues
+PDF / CSV Report Export for Admin Analytics
+proper alignment in ui

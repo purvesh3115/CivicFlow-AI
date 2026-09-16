@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "492981225561",
+    "project_id": "citizen-connect-57db0",
+    "storage_bucket": "citizen-connect-57db0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492981225561:android:0edf3027c4d174c947c948",
+        "android_client_info": {
+          "package_name": "com.citizenconnect.citizen_connect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6dnrYsqUMDh_ohs40DJSyWGoMaKWb0TI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492981225561:android:0edf3027c4d174c947c948",
+        "android_client_info": {
+          "package_name": "com.example.mobile_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6dnrYsqUMDh_ohs40DJSyWGoMaKWb0TI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

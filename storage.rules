@@ -1,0 +1,38 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    function isUnderMaxSize(maxMegabytes) {
+      return request.resource.size < maxMegabytes * 1024 * 1024;
+    }
+
+    // Complaints evidence images
+    match /complaints/{complaintId}/images/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isImage() && isUnderMaxSize(15);
+      allow delete: if isAuthenticated();
+    }
+
+    // Resolution evidence images uploaded by officers
+    match /complaints/{complaintId}/resolution/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isImage() && isUnderMaxSize(15);
+      allow delete: if isAuthenticated();
+    }
+
+    // User profile pictures and documents
+    match /users/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && request.auth.uid == userId && isUnderMaxSize(10);
+      allow delete: if isAuthenticated() && request.auth.uid == userId;
+    }
+  }
+}

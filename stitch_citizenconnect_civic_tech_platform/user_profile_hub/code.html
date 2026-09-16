@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CitizenConnect - Profile Hub</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#0b1c30",
+                    "on-error-container": "#93000a",
+                    "surface": "#f8f9ff",
+                    "on-surface-variant": "#434655",
+                    "on-tertiary-fixed": "#25005a",
+                    "inverse-primary": "#b4c5ff",
+                    "secondary-container": "#8fa7fe",
+                    "outline": "#737686",
+                    "on-surface": "#0b1c30",
+                    "surface-container": "#e5eeff",
+                    "tertiary-container": "#8343f4",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary-fixed-variant": "#5a00c6",
+                    "primary-container": "#2563eb",
+                    "on-secondary-fixed": "#00164e",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary-container": "#eeefff",
+                    "on-error": "#ffffff",
+                    "background": "#f8f9ff",
+                    "on-secondary-container": "#1d3989",
+                    "surface-dim": "#cbdbf5",
+                    "tertiary-fixed": "#eaddff",
+                    "surface-variant": "#d3e4fe",
+                    "inverse-surface": "#213145",
+                    "primary": "#004ac6",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container-high": "#dce9ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#4059aa",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#f7edff",
+                    "outline-variant": "#c3c6d7",
+                    "tertiary-fixed-dim": "#d2bbff",
+                    "on-secondary-fixed-variant": "#264191",
+                    "secondary-fixed-dim": "#b6c4ff",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#6a1edb",
+                    "on-primary-fixed": "#00174b",
+                    "surface-tint": "#0053db",
+                    "secondary-fixed": "#dce1ff",
+                    "primary-fixed": "#dbe1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "base": "8px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "xs": "4px",
+                    "container-max": "1280px",
+                    "xl": "40px",
+                    "safe": "env(safe-area-inset-bottom)"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-sm": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Manrope"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-background min-h-screen text-on-background font-body-md text-body-md pb-24 selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface w-full top-0 sticky shadow-sm flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 z-40">
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-high transition-colors rounded-full p-1 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary text-headline-md" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">CitizenConnect</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant active:scale-95 duration-150">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-lg">
+<!-- Profile Header Section -->
+<section class="flex flex-col items-center justify-center mb-xl mt-md">
+<div class="relative group">
+<img class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover shadow-md border-4 border-surface-container-lowest mb-md transition-transform duration-300 group-hover:scale-105" data-alt="A professional, high-quality, closely cropped portrait photograph of a young Indian man named Purvesh. He has short neat hair and a friendly, confident expression. He is wearing a modern, crisp light blue collared shirt. The lighting is bright, soft, and natural, creating a clean light-mode aesthetic suitable for a corporate or government citizen app profile picture. The background is a slightly blurred, bright, minimalist office setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCeBSltwsyVP6kW3tRxWPLHcH5Q3B14ssG10pvv35adPiOUl2cIcvpoycorbMUgcPZR7WWWTXmpxB8aLYG8S52CerrZRfYq4MgLgcUpgfG9rLU5Zkzb3Ll8H5dVqAMeDbhj-h8ui0klGIoAFWeUyEKIWmvLFQTT4DUAWxK761nm0WcbKQ2z7HfcE6lD2_CdC2RSGUTK6JJUtsPaQp1l_nLdSWrtgKL8ZeRkbBnAnTbdVE-jkZ2e9Ci">
+<button class="absolute bottom-4 right-0 bg-primary text-on-primary rounded-full w-8 h-8 flex items-center justify-center shadow-md hover:bg-surface-tint transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-xs">Purvesh</h1>
+<div class="flex items-center gap-xs text-on-surface-variant font-label-md text-label-md bg-surface-container-low px-sm py-1 rounded-full">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span>Central District, Cityville</span>
+</div>
+</section>
+<!-- Menu List Section (Card Based) -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col mx-auto max-w-3xl">
+<!-- Personal Information -->
+<button class="flex items-center justify-between w-full p-md hover:bg-surface-container-low transition-colors duration-200 border-b border-surface-container group text-left">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">person</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Personal Information</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+<!-- My Documents/Certificates -->
+<button class="flex items-center justify-between w-full p-md hover:bg-surface-container-low transition-colors duration-200 border-b border-surface-container group text-left">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined">description</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">My Documents &amp; Certificates</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="bg-error text-on-error font-label-sm text-label-sm px-2 py-0.5 rounded-full shadow-sm">3 New</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</button>
+<!-- Notification Settings -->
+<button class="flex items-center justify-between w-full p-md hover:bg-surface-container-low transition-colors duration-200 border-b border-surface-container group text-left">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant group-hover:bg-tertiary-container group-hover:text-on-tertiary-container transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Notification Settings</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+<!-- Security & Privacy -->
+<button class="flex items-center justify-between w-full p-md hover:bg-surface-container-low transition-colors duration-200 border-b border-surface-container group text-left">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:bg-outline-variant group-hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">security</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Security &amp; Privacy</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+<!-- Help & Support -->
+<button class="flex items-center justify-between w-full p-md hover:bg-surface-container-low transition-colors duration-200 border-b border-surface-container group text-left">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface group-hover:bg-surface-dim transition-colors">
+<span class="material-symbols-outlined">help</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Help &amp; Support</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+<!-- Logout -->
+<button class="flex items-center justify-between w-full p-md hover:bg-error-container transition-colors duration-200 group text-left">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center text-error group-hover:bg-error group-hover:text-on-error transition-colors">
+<span class="material-symbols-outlined">logout</span>
+</div>
+<span class="font-body-md text-body-md text-error font-medium">Logout</span>
+</div>
+<span class="material-symbols-outlined text-error opacity-70 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+</section>
+<!-- Additional App Info -->
+<div class="text-center mt-lg">
+<p class="font-label-sm text-label-sm text-outline">CitizenConnect Version 2.4.1</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-surface-container-lowest shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50 rounded-t-3xl border-t border-surface-variant">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 ease-in-out w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1">home</span>
+<span class="font-label-sm text-label-sm text-[10px]">Home</span>
+</a>
+<!-- Complaints -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 ease-in-out w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1">assignment_late</span>
+<span class="font-label-sm text-label-sm text-[10px]">Complaints</span>
+</a>
+<!-- Services -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 ease-in-out w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1">grid_view</span>
+<span class="font-label-sm text-label-sm text-[10px]">Services</span>
+</a>
+<!-- AI -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 ease-in-out w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1">smart_toy</span>
+<span class="font-label-sm text-label-sm text-[10px]">AI</span>
+</a>
+<!-- Profile (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[24px] mb-0.5" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm text-[10px] font-bold">Profile</span>
+</a>
+</nav>
+</body></html>

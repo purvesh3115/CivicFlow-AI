@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Auto Assign Complaint</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "surface": "#faf8ff",
+                      "outline": "#737686",
+                      "surface-dim": "#d9d9e5",
+                      "secondary-fixed": "#9cf2e8",
+                      "primary-container": "#2563eb",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-low": "#f3f3fe",
+                      "on-error": "#ffffff",
+                      "tertiary-container": "#bc4800",
+                      "on-background": "#191b23",
+                      "error": "#ba1a1a",
+                      "outline-variant": "#c3c6d7",
+                      "secondary-container": "#99efe5",
+                      "tertiary-fixed": "#ffdbcd",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#006f67",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#006a63",
+                      "on-primary-container": "#eeefff",
+                      "on-tertiary-fixed": "#360f00",
+                      "surface-tint": "#0053db",
+                      "secondary-fixed-dim": "#80d5cb",
+                      "on-secondary-fixed": "#00201d",
+                      "on-tertiary-container": "#ffede6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed": "#00174b",
+                      "on-error-container": "#93000a",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#00504a",
+                      "surface-variant": "#e1e2ed",
+                      "background": "#faf8ff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-surface": "#191b23",
+                      "inverse-primary": "#b4c5ff",
+                      "primary": "#004ac6",
+                      "inverse-surface": "#2e3039",
+                      "on-surface-variant": "#434655",
+                      "surface-container-highest": "#e1e2ed",
+                      "surface-container-high": "#e7e7f3",
+                      "tertiary": "#943700",
+                      "inverse-on-surface": "#f0f0fb",
+                      "surface-container": "#ededf9",
+                      "surface-bright": "#faf8ff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sidebar-width": "260px",
+                      "md": "16px",
+                      "base": "4px",
+                      "xl": "32px",
+                      "lg": "24px",
+                      "margin-desktop": "32px",
+                      "margin-mobile": "16px",
+                      "sm": "8px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "2xl": "48px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "code": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "code": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-lg min-h-screen pb-20">
+<!-- Top App Bar -->
+<header class="bg-surface flex justify-between items-center w-full px-margin-mobile h-16 sticky top-0 z-40 border-b border-outline-variant shadow-sm">
+<button class="text-on-surface-variant hover:bg-surface-container rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary font-bold">Auto Assign Complaint</h1>
+<div class="w-10"></div> <!-- Spacer for alignment -->
+</header>
+<main class="p-margin-mobile space-y-lg">
+<!-- Complaint Summary Context -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md shadow-sm">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Complaint ID: #CPL-9824</span>
+<span class="bg-error/10 text-error font-label-sm text-label-sm px-2 py-1 rounded-sm uppercase tracking-wider font-semibold">High Priority</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Pothole on Main St.</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Large pothole reported on the northbound lane of Main St, causing traffic delays and potential vehicle damage.</p>
+</section>
+<!-- AI Recommendation Section -->
+<section class="space-y-md relative">
+<div class="flex items-center gap-2 mb-sm">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<h3 class="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider">AI Recommendation</h3>
+</div>
+<!-- Bento-style Recommendation Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm relative">
+<!-- Subtle Gradient Accent for AI context -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-tertiary to-primary"></div>
+<div class="p-md border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<img alt="Officer Avatar" class="w-16 h-16 rounded-full object-cover border-2 border-surface-container-high" data-alt="Professional headshot of a municipal officer in a clear, bright outdoor setting. The officer is wearing a subtle official uniform. High key lighting, clean modern photography style suitable for a professional ID." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEoMnhKc0aAKTmL523kDqQGvQvDTyAp_6WZVmgZApubYVYFuA0D98Tl1C1sJe6X6cHIMVYSzu80Zl6ILofQgJGKGq0Ba9lOjlJ28aJLVoV5EOxwnERF4dF3A_gRiAdlFVVG-_kvbJpInekJQFDoefTIM9JXlsiIU0lteqATiOA6LxZZLCckmZrU8dzk635NLsQSFY7kTZM2gZU8NivKVnl8RK4VnCCXmXWZYADlEBaflHq_tjj_3OJ"/>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Raj Patel</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Roads &amp; Public Works</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 divide-x divide-y divide-outline-variant">
+<div class="p-sm flex flex-col justify-center items-center text-center bg-surface-container-low">
+<span class="material-symbols-outlined text-on-surface-variant mb-1 text-lg">location_on</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Distance</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">2.4 km</span>
+</div>
+<div class="p-sm flex flex-col justify-center items-center text-center bg-surface-container-low">
+<span class="material-symbols-outlined text-on-surface-variant mb-1 text-lg">work_history</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Active Workload</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">4 tasks</span>
+</div>
+<div class="p-sm flex flex-col justify-center items-center text-center bg-surface-container-low col-span-2">
+<span class="material-symbols-outlined text-secondary mb-1 text-lg">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Status</span>
+<span class="font-label-md text-label-md text-secondary font-bold">Available</span>
+</div>
+</div>
+<div class="p-md bg-tertiary/5 border-t border-outline-variant">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm mt-1">info</span>
+<div>
+<p class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider mb-xs">Reason for Recommendation</p>
+<p class="font-body-sm text-body-sm text-on-surface italic">"Closest available officer with suitable workload capacity."</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<section class="flex flex-col gap-sm pt-md">
+<button class="bg-primary text-on-primary font-label-md text-label-md py-3 px-4 rounded-full w-full shadow-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment_turned_in</span>
+                ACCEPT ASSIGNMENT
+            </button>
+<button class="bg-transparent border border-outline text-on-surface-variant font-label-md text-label-md py-3 px-4 rounded-full w-full hover:bg-surface-container transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">person_search</span>
+                CHOOSE MANUALLY
+            </button>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 bg-surface border-t border-outline-variant shadow-[0_-1px_3px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">history_edu</span>
+<span class="font-label-sm text-label-sm mt-1">Complaints</span>
+</a>
+<!-- Active Tab: Assign -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-95 transition-transform duration-100 shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_add</span>
+<span class="font-label-sm text-label-sm mt-1 font-bold">Assign</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">settings_suggest</span>
+<span class="font-label-sm text-label-sm mt-1">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">more_horiz</span>
+<span class="font-label-sm text-label-sm mt-1">More</span>
+</a>
+</nav>
+</body></html>
