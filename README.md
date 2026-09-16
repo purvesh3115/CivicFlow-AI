@@ -38,4 +38,5 @@ Key Features
 ✅ Resolution evidence and citizen verification
 
 📊 Admin analytics and monitoring
+
 🔐 Role-based authentication and access control
