@@ -123,10 +123,83 @@ class ComplaintCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
 
-                // Status Chip
-                StatusChip(
-                  status: complaint.status,
-                  isCompact: true,
+                // Status Chip & Rating Badge
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    StatusChip(
+                      status: complaint.status,
+                      isCompact: true,
+                    ),
+                    if (complaint.status.toLowerCase() == 'resolved') ...[
+                      const SizedBox(height: 4),
+                      if (complaint.citizenRating != null)
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFEF3C7),
+                            borderRadius: BorderRadius.circular(6),
+                            border: Border.all(
+                              color: const Color(0xFFF59E0B).withAlpha(120),
+                              width: 0.8,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.star_rounded,
+                                size: 13,
+                                color: Color(0xFFD97706),
+                              ),
+                              const SizedBox(width: 2),
+                              Text(
+                                '${complaint.citizenRating}.0',
+                                style: const TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFF92400E),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      else
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFFFBEB),
+                            borderRadius: BorderRadius.circular(6),
+                            border: Border.all(
+                              color: const Color(0xFFF59E0B).withAlpha(100),
+                              width: 0.8,
+                            ),
+                          ),
+                          child: const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.star_outline_rounded,
+                                size: 13,
+                                color: Color(0xFFD97706),
+                              ),
+                              SizedBox(width: 2),
+                              Text(
+                                'Rate',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFFB45309),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                    ],
+                  ],
                 ),
               ],
             ),

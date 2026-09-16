@@ -96,6 +96,11 @@ class OfficerComplaintDetailsScreen extends StatelessWidget {
 
                     // AI Analysis Result Card
                     _buildAiAnalysisCard(complaint),
+
+                    // Citizen Review & Rating (for resolved or rated complaints)
+                    if (complaint.citizenRating != null ||
+                        complaint.status.toLowerCase() == 'resolved')
+                      _buildCitizenReviewCard(complaint),
                   ],
                 ),
               ),
@@ -522,6 +527,123 @@ class OfficerComplaintDetailsScreen extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+
+  Widget _buildCitizenReviewCard(ComplaintModel complaint) {
+    final hasRating = complaint.citizenRating != null;
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(top: 16),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: hasRating
+            ? const Color(0xFFFEF3C7).withAlpha(100)
+            : AppColors.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: hasRating
+              ? const Color(0xFFF59E0B).withAlpha(120)
+              : AppColors.outlineVariant,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    hasRating ? Icons.star_rounded : Icons.star_outline_rounded,
+                    size: 18,
+                    color: hasRating
+                        ? const Color(0xFFD97706)
+                        : AppColors.textSecondary,
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    'CITIZEN REVIEW & RATING',
+                    style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.5,
+                      color: hasRating
+                          ? const Color(0xFF92400E)
+                          : AppColors.textSecondary,
+                    ),
+                  ),
+                ],
+              ),
+              if (hasRating)
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: List.generate(5, (index) {
+                    final isFilled = index < (complaint.citizenRating ?? 0);
+                    return Icon(
+                      isFilled
+                          ? Icons.star_rounded
+                          : Icons.star_outline_rounded,
+                      size: 16,
+                      color: isFilled
+                          ? const Color(0xFFF59E0B)
+                          : AppColors.outlineVariant,
+                    );
+                  }),
+                ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          if (hasRating) ...[
+            if (complaint.citizenFeedback != null &&
+                complaint.citizenFeedback!.isNotEmpty)
+              Text(
+                '"${complaint.citizenFeedback}"',
+                style: const TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 14,
+                  fontStyle: FontStyle.italic,
+                  color: AppColors.textPrimary,
+                  height: 1.4,
+                ),
+              )
+            else
+              Text(
+                'Rated ${complaint.citizenRating} out of 5 stars',
+                style: const TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textPrimary,
+                ),
+              ),
+            if (complaint.ratedAt != null) ...[
+              const SizedBox(height: 6),
+              Text(
+                'Submitted on ${complaint.ratedAt!.day}/${complaint.ratedAt!.month}/${complaint.ratedAt!.year}',
+                style: const TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 11,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+            ],
+          ] else ...[
+            const Text(
+              'Awaiting citizen rating & review upon resolution.',
+              style: TextStyle(
+                fontFamily: 'Inter',
+                fontSize: 13,
+                fontStyle: FontStyle.italic,
+                color: AppColors.textSecondary,
+              ),
+            ),
+          ],
+        ],
+      ),
     );
   }
 }

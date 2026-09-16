@@ -19,6 +19,9 @@ class ComplaintModel {
   final String citizenId;
   final String citizenName;
   final String? resolutionImageUrl;
+  final int? citizenRating;
+  final String? citizenFeedback;
+  final DateTime? ratedAt;
   final DateTime createdAt;
   final DateTime? updatedAt;
 
@@ -41,6 +44,9 @@ class ComplaintModel {
     this.citizenId = '',
     required this.citizenName,
     this.resolutionImageUrl,
+    this.citizenRating,
+    this.citizenFeedback,
+    this.ratedAt,
     required this.createdAt,
     this.updatedAt,
   });
@@ -65,6 +71,9 @@ class ComplaintModel {
     String? citizenId,
     String? citizenName,
     String? resolutionImageUrl,
+    int? citizenRating,
+    String? citizenFeedback,
+    DateTime? ratedAt,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) {
@@ -87,6 +96,9 @@ class ComplaintModel {
       citizenId: citizenId ?? this.citizenId,
       citizenName: citizenName ?? this.citizenName,
       resolutionImageUrl: resolutionImageUrl ?? this.resolutionImageUrl,
+      citizenRating: citizenRating ?? this.citizenRating,
+      citizenFeedback: citizenFeedback ?? this.citizenFeedback,
+      ratedAt: ratedAt ?? this.ratedAt,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
@@ -141,6 +153,14 @@ class ComplaintModel {
       citizenName: json['citizen_name']?.toString() ?? json['citizenName']?.toString() ?? 'Citizen',
       resolutionImageUrl: json['resolution_image_url']?.toString() ??
           json['resolutionImageUrl']?.toString(),
+      citizenRating: (json['citizen_rating'] ?? json['citizenRating']) is num
+          ? (json['citizen_rating'] ?? json['citizenRating']).toInt()
+          : null,
+      citizenFeedback: json['citizen_feedback']?.toString() ??
+          json['citizenFeedback']?.toString(),
+      ratedAt: json['rated_at'] != null || json['ratedAt'] != null
+          ? _parseDateTime(json['rated_at'] ?? json['ratedAt'])
+          : null,
       createdAt: _parseDateTime(json['created_at'] ?? json['createdAt']),
       updatedAt: json['updated_at'] != null || json['updatedAt'] != null
           ? _parseDateTime(json['updated_at'] ?? json['updatedAt'])
@@ -169,6 +189,9 @@ class ComplaintModel {
       'citizen_id': citizenId,
       'citizen_name': citizenName,
       'resolution_image_url': resolutionImageUrl,
+      'citizen_rating': citizenRating,
+      'citizen_feedback': citizenFeedback,
+      'rated_at': ratedAt?.toIso8601String(),
       'created_at': createdAt.toIso8601String(),
       'updated_at': updatedAt?.toIso8601String(),
     };
@@ -194,6 +217,9 @@ class ComplaintModel {
       'citizenId': citizenId,
       'citizenName': citizenName,
       'resolutionImageUrl': resolutionImageUrl,
+      'citizenRating': citizenRating,
+      'citizenFeedback': citizenFeedback,
+      'ratedAt': ratedAt != null ? Timestamp.fromDate(ratedAt!) : null,
       'createdAt': Timestamp.fromDate(createdAt),
       'updatedAt': updatedAt != null ? Timestamp.fromDate(updatedAt!) : FieldValue.serverTimestamp(),
     };

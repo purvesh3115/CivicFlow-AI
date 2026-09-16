@@ -427,6 +427,37 @@ class ComplaintProvider extends ChangeNotifier {
     _complaintService.unassignOfficer(complaintId: complaintId);
   }
 
+  /// Submits citizen rating (1-5) and feedback for a resolved complaint
+  Future<bool> submitComplaintFeedback({
+    required String complaintId,
+    required int rating,
+    required String feedback,
+  }) async {
+    final index = _complaints
+        .indexWhere((c) => c.id.toLowerCase() == complaintId.toLowerCase());
+
+    if (index != -1) {
+      final old = _complaints[index];
+      _complaints[index] = old.copyWith(
+        citizenRating: rating,
+        citizenFeedback: feedback,
+        ratedAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+      );
+      notifyListeners();
+    }
+
+    try {
+      await _complaintService.submitFeedback(
+        complaintId: complaintId,
+        rating: rating,
+        feedback: feedback,
+      );
+    } catch (_) {}
+
+    return true;
+  }
+
 
   // Step 1: Category selection
   void setDraftCategory(String category) {

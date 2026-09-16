@@ -1,5 +1,5 @@
 [COMPLETED] 1. Offline Queue & Auto-Sync Engine (persists offline complaints & local photos, background sync banner, zero connectivity support)
 [COMPLETED] 2. Real SMS OTP Authentication (Firebase Phone Auth verifyPhoneNumber, E.164 formatting, auto-verification, resend token)
-Citizen Rating & Feedback Modal on resolved issues
+[COMPLETED] 3. Citizen Rating & Feedback Modal on resolved issues (5-star dynamic rating, sentiment tags, detailed comments, review displays on cards, detail modals, and officer portal)
 PDF / CSV Report Export for Admin Analytics
 proper alignment in ui

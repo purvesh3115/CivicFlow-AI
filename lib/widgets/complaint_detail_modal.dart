@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../core/theme/app_colors.dart';
 import '../core/theme/app_typography.dart';
 import '../models/complaint_model.dart';
+import 'citizen_feedback_modal.dart';
 import 'status_chip.dart';
 
 class ComplaintDetailModal {
@@ -267,6 +268,133 @@ class ComplaintDetailModal {
                     ),
                   ),
                   const SizedBox(height: 20),
+                ],
+
+                // Citizen Rating & Feedback Section for Resolved issues
+                if (complaint.status.toLowerCase() == 'resolved') ...[
+                  if (complaint.citizenRating == null)
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFEF3C7),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: const Color(0xFFF59E0B).withAlpha(120),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.star_rounded,
+                                color: Color(0xFFD97706),
+                                size: 24,
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  'Resolution Awaiting Your Review',
+                                  style: AppTypography.labelLarge.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xFF92400E),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            'Are you satisfied with how this issue was resolved? Rate the resolution to help us maintain civic standards.',
+                            style: AppTypography.bodySmall.copyWith(
+                              color: const Color(0xFFB45309),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Navigator.pop(ctx);
+                                CitizenFeedbackModal.show(context, complaint);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFFD97706),
+                                foregroundColor: Colors.white,
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 12),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                elevation: 0,
+                              ),
+                              icon: const Icon(Icons.rate_review_rounded,
+                                  size: 18),
+                              label: const Text(
+                                'Rate & Review',
+                                style: TextStyle(fontWeight: FontWeight.w700),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  else
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: AppColors.surfaceContainerLow,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: AppColors.outlineVariant.withAlpha(80),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Citizen Review & Rating',
+                                style: AppTypography.labelMedium.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              Row(
+                                children: List.generate(5, (index) {
+                                  final isFilled =
+                                      index < (complaint.citizenRating ?? 0);
+                                  return Icon(
+                                    isFilled
+                                        ? Icons.star_rounded
+                                        : Icons.star_outline_rounded,
+                                    size: 18,
+                                    color: isFilled
+                                        ? const Color(0xFFF59E0B)
+                                        : AppColors.outlineVariant,
+                                  );
+                                }),
+                              ),
+                            ],
+                          ),
+                          if (complaint.citizenFeedback != null &&
+                              complaint.citizenFeedback!.isNotEmpty) ...[
+                            const SizedBox(height: 8),
+                            Text(
+                              '"${complaint.citizenFeedback}"',
+                              style: AppTypography.bodySmall.copyWith(
+                                color: AppColors.onSurfaceVariant,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
                 ],
 
                 // Close button

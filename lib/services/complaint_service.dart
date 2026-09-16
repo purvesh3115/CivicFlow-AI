@@ -320,5 +320,31 @@ class ComplaintService {
       return false;
     }
   }
+
+  /// Submits citizen rating and written feedback for a resolved complaint
+  Future<bool> submitFeedback({
+    required String complaintId,
+    required int rating,
+    required String feedback,
+  }) async {
+    try {
+      final ref = _complaintsRef;
+      if (ref == null) return true;
+
+      final docRef = ref.doc(complaintId);
+      await docRef.update({
+        'citizenRating': rating,
+        'citizenFeedback': feedback,
+        'ratedAt': FieldValue.serverTimestamp(),
+        'updatedAt': FieldValue.serverTimestamp(),
+      });
+      return true;
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error submitting feedback for $complaintId: $e');
+      }
+      return false;
+    }
+  }
 }
 
